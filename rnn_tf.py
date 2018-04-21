@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Text generation using a Recurrent Neural Network (LSTM).
 """
@@ -6,10 +7,8 @@ import argparse
 import os
 import random
 import time
-
 import numpy as np
 import tensorflow as tf
-
 
 class ModelNetwork:
     """
@@ -187,7 +186,7 @@ def main():
     parser.add_argument(
         "--input_file",
         type=str,
-        default="data/shakespeare.txt",
+        default="data/matsios.txt",
         help="Text file to load."
     )
     parser.add_argument(
@@ -229,7 +228,7 @@ def main():
     NUM_TRAIN_BATCHES = 20000
 
     # Number of test characters of text to generate after training the network
-    LEN_TEST_TEXT = 500
+    LEN_TEST_TEXT = 1500
 
     # Initialize the network
     config = tf.ConfigProto()
@@ -294,7 +293,6 @@ def main():
             out = net.run_step(embed_to_vocab(vocab[element], vocab), False)
 
         print(gen_str)
-
 
 if __name__ == "__main__":
     main()
